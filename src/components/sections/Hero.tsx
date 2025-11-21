@@ -287,17 +287,6 @@ export function Hero() {
 
             {/* Contenu texte */}
             <div className="flex flex-col items-center md:items-start">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, type: 'spring' }}
-                className="mb-6"
-              >
-                <span className="inline-block px-6 py-3 mb-6 text-sm font-medium bg-primary/10 text-primary rounded-full border border-primary/20">
-                  👋 Bienvenue sur mon portfolio
-                </span>
-              </motion.div>
-
               <motion.h1
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}

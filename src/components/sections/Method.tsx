@@ -1,14 +1,13 @@
-
 'use client'
 
 import React from 'react'
 
 import { motion } from 'framer-motion'
-import { FaGitAlt, FaRegComments, FaRocket, FaCloud } from 'react-icons/fa'
+import { FaCloud, FaGitAlt, FaRegComments, FaRocket } from 'react-icons/fa'
 
 const steps = [
   {
-    icon: <FaCloud className="w-8 h-8 text-primary" />, 
+    icon: <FaCloud className="w-8 h-8 text-primary" />,
     title: 'Déploiement instantané',
     desc: 'Le site est déployé sur Vercel dès le début, accès en temps réel pour le client.',
   },

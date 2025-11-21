@@ -1,22 +1,11 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { ArrowDown, Code, Github, Linkedin, Mail, Palette, Sparkles, Star, Zap } from 'lucide-react'
 import Image from 'next/image'
-import { useRef } from 'react'
 
 export function Hero() {
-  const ref = useRef(null)
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start start', 'end start'],
-  })
-
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.5, 0])
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8])
-
   return (
     <>
       {/* Extra animated Zap icons for visual balance - position final */}
@@ -62,13 +51,13 @@ export function Hero() {
       >
         <Zap className="w-full h-full text-primary" />
       </motion.div>
+
       <section
         id="hero"
-        ref={ref}
         className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
       >
-        {/* Simple background with parallax */}
-        <motion.div style={{ y }} className="absolute inset-0 bg-background" />
+        {/* Simple background sans parallax */}
+        <div className="absolute inset-0 bg-background" />
 
         {/* Floating geometric shapes */}
         {/* <motion.div
@@ -263,7 +252,7 @@ export function Hero() {
           }}
         />
 
-        <motion.div style={{ scale, opacity }} className="container relative z-10 mx-auto px-6">
+        <div className="container relative z-10 mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16 text-center md:text-left max-w-6xl mx-auto">
             {/* Photo de profil */}
             <motion.div
@@ -358,7 +347,7 @@ export function Hero() {
               </motion.div>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         <motion.div
           initial={{ opacity: 0 }}

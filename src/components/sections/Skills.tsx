@@ -1,15 +1,36 @@
 'use client'
 
+import { InteractiveCard } from '@/components/ui/InteractiveCard'
 import { motion } from 'framer-motion'
-import { SiFigma, SiNextdotjs, SiReact, SiTailwindcss, SiTypescript } from 'react-icons/si'
+import { SiFigma, SiReact, SiTailwindcss, SiTypescript } from 'react-icons/si'
 import { useInView } from 'react-intersection-observer'
 
-const frontendSkills = [
-  { name: 'React/Next.js', level: 95 },
-  { name: 'TypeScript', level: 90 },
-  { name: 'Tailwind CSS', level: 95 },
-  { name: 'Framer Motion', level: 85 },
-  { name: 'Figma', level: 85 },
+const skills = [
+  {
+    icon: <SiReact className="w-12 h-12" />,
+    title: 'React / Next.js',
+    description:
+      'Frameworks modernes pour des interfaces ultra-rapides, SEO-friendly et scalables.',
+    color: '#5a7aa6',
+  },
+  {
+    icon: <SiTypescript className="w-12 h-12" />,
+    title: 'TypeScript',
+    description: 'Typage strict pour un code robuste, maintenable et sans surprise.',
+    color: '#3178c6',
+  },
+  {
+    icon: <SiTailwindcss className="w-12 h-12" />,
+    title: 'Tailwind CSS',
+    description: 'Design system moderne, responsive et personnalisable à l’infini.',
+    color: '#38bdf8',
+  },
+  {
+    icon: <SiFigma className="w-12 h-12" />,
+    title: 'Figma',
+    description: 'Prototypage et design UI/UX pour des interfaces élégantes et efficaces.',
+    color: '#a259ff',
+  },
 ]
 
 export function Skills() {
@@ -20,7 +41,7 @@ export function Skills() {
 
   return (
     <section id="skills" ref={ref} className="py-32 px-6 bg-white dark:bg-black">
-      <div className="container mx-auto max-w-xl">
+      <div className="container mx-auto max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -34,44 +55,17 @@ export function Skills() {
             Technologies et outils que je maîtrise pour créer des applications exceptionnelles
           </p>
         </motion.div>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
-          transition={{ duration: 0.7 }}
-          className="p-10 rounded-2xl bg-card border border-border shadow-xl flex flex-col items-center"
-        >
-          {/* Stack d'icônes principales */}
-          <div className="flex gap-6 mb-8">
-            <SiReact className="w-10 h-10 text-primary drop-shadow-[0_0_8px_#5a7aa6] animate-spin-slow" />
-            <SiNextdotjs className="w-10 h-10 text-primary/80" />
-            <SiTypescript className="w-10 h-10 text-primary/80" />
-            <SiTailwindcss className="w-10 h-10 text-primary/80" />
-            <SiFigma className="w-10 h-10 text-primary/80" />
-          </div>
-          <div className="w-full space-y-6">
-            {frontendSkills.map((skill, i) => (
-              <motion.div
-                key={skill.name}
-                initial={{ opacity: 0, x: -20 }}
-                animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                transition={{ duration: 0.7, delay: 0.2 + i * 0.1 }}
-              >
-                <div className="flex justify-between mb-2">
-                  <span className="font-medium text-foreground">{skill.name}</span>
-                  <span className="text-muted-foreground">{skill.level}%</span>
-                </div>
-                <div className="h-3 bg-muted rounded-full overflow-hidden border border-border">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={inView ? { width: `${skill.level}%` } : { width: 0 }}
-                    transition={{ duration: 1, delay: 0.3 + i * 0.1 }}
-                    className="h-full bg-primary rounded-full shadow-md"
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 gap-x-12 mt-8">
+          {skills.map((skill) => (
+            <InteractiveCard
+              key={skill.title}
+              icon={skill.icon}
+              title={skill.title}
+              description={skill.description}
+              color={skill.color}
+            />
+          ))}
+        </div>
       </div>
     </section>
   )
